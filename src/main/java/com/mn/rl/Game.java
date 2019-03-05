@@ -5,23 +5,13 @@ import com.mn.rl.board.BoardState;
 import com.mn.rl.player.PlayerTurn;
 
 public abstract class Game {
-        protected GameState gameState;
         protected Board board;
         protected PlayerTurn playerTurn;
 
-        public Game(GameState gameState, Board board, PlayerTurn playerTurn) {
+        public Game(Board board, PlayerTurn playerTurn) {
                 super();
-                this.setGameState(gameState);
                 this.board = board;
                 this.playerTurn = playerTurn;
-        }
-
-        public GameState getGameState() {
-                return gameState;
-        }
-
-        public void setGameState(GameState gameState) {
-                this.gameState = gameState;
         }
 
         public Board getBoard() {
@@ -39,8 +29,6 @@ public abstract class Game {
         public void setPlayerTurn(PlayerTurn playerTurn) {
                 this.playerTurn = playerTurn;
         }
-
-        public abstract void playTurn();
 
         public abstract BoardState play() throws Exception;
 }

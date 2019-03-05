@@ -11,7 +11,6 @@ import com.mn.rl.board.TicTacToeBoard;
 import com.mn.rl.board.TicTacToeBoardFormatter;
 import com.mn.rl.board.TicTacToeBoardStateDecider;
 import com.mn.rl.player.InvalidMoveException;
-import com.mn.rl.player.InvalidMoveInputException;
 import com.mn.rl.player.Player;
 import com.mn.rl.player.PlayerMove;
 import com.mn.rl.player.PlayerTurn;
@@ -21,26 +20,27 @@ import com.mn.rl.player.TicTacToePlayerTurn;
 
 public class TicTacToe extends Game {
 
-        public TicTacToe(GameState gameState, Board board, PlayerTurn playerTurn) {
-                super(gameState, board, playerTurn);
+        private final String PLAYER_TURN_TEXT = "It is %s turn. [symbol = %s]";
+        private final String HUMAN_PLAYER_INSTRUCTIONS = "Please make your move (in the form 'row,column'): ";
+        private final String USER_INPUT_REGEX = "\\d+,\\d+";
+
+        public TicTacToe(Board board, PlayerTurn playerTurn) {
+                super(board, playerTurn);
         }
 
         public TicTacToe(int boardSize, List<Player> players) {
-                this(GameState.ACTIVE, new TicTacToeBoard(boardSize, new TicTacToeBoardFormatter(),
-                                new TicTacToeBoardStateDecider()), new TicTacToePlayerTurn(players));
+                this(new TicTacToeBoard(boardSize, new TicTacToeBoardFormatter(), new TicTacToeBoardStateDecider()),
+                                new TicTacToePlayerTurn(players));
         }
-
-        private final String PLAYER_TURN_TEXT = "It is %s turn. ";
-        private final String HUMAN_PLAYER_INSTRUCTIONS = "Please make your move (in the form 'row,column'): ";
 
         @Override
         public BoardState play() throws Exception {
                 try (Scanner scanner = new Scanner(System.in)) {
-
                         do {
                                 Player currentPlayer = playerTurn.currentPlayer();
 
-                                System.out.println(String.format(PLAYER_TURN_TEXT, currentPlayer.getPlayerName()));
+                                System.out.println(String.format(PLAYER_TURN_TEXT, currentPlayer.getPlayerName(),
+                                                currentPlayer.getPlayerSymbol()));
 
                                 PlayerMove playerMove = null;
 
@@ -75,48 +75,14 @@ public class TicTacToe extends Game {
 
                                 board.updateWithMove(currentPlayer, playerMove);
                                 board.display();
-
-                                if (board.getBoardState().getBoardStateType() == BoardStateType.PLAYING) {
-                                        playerTurn.nextPlayer();
-                                }
-
+                                playerTurn.nextPlayer();
                         } while (board.getBoardState().getBoardStateType() == BoardStateType.PLAYING);
                 }
                 return board.getBoardState();
         }
 
-        private final String USER_INPUT_REGEX = "\\d+,\\d+";
-
         private boolean validHumanPlayerInput(String userInput) {
                 return Pattern.compile(USER_INPUT_REGEX).matcher(userInput).matches();
         }
 
-        @Override
-        public void playTurn() {
-                // get current player
-                Player currentPlayer = playerTurn.currentPlayer();
-
-                try {
-                        // validate player move
-                        // if the move is invalid, then end turn
-                        // else the move is valid, update the board
-                        PlayerMove pMove = currentPlayer.move(board);
-                        // System.out.println(String.format("rInd = %s, cInd = %s", pMove.getRow(),
-                        // pMove.getRow()));
-                        System.out.println(String.format("Board dimensions =   %d", board.getBoardDimension()));
-                        // pMove.validate(board.getBoardDimension());
-                        board.updateWithMove(currentPlayer, pMove);
-                } catch (InvalidMoveInputException e) {
-                        System.out.println(e.getMessage());
-                        return;
-                }
-
-                // if the board is a playing state, then go to next player and next turn
-                // else deactivate game state
-                if (board.getBoardState().getBoardStateType() == BoardStateType.PLAYING) {
-                        playerTurn.nextPlayer();
-                } else {
-                        gameState = GameState.INACTIVE;
-                }
-        }
 }

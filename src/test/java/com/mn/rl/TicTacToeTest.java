@@ -27,7 +27,6 @@ public class TicTacToeTest {
                 Game game = new TicTacToe(dimension, players);
 
                 assertAll(() -> assertEquals(dimension, game.getBoard().getBoardDimension()),
-                                () -> assertEquals(GameState.ACTIVE, game.getGameState()),
                                 () -> assertEquals(players.get(0), game.getPlayerTurn().currentPlayer()),
                                 () -> assertEquals(BoardStateType.PLAYING,
                                                 game.getBoard().getBoardState().getBoardStateType()),
