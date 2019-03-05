@@ -1,0 +1,17 @@
+{
+  "dimension": 10,
+  "players": [
+    {
+      "symbol": "x",
+      "playerType": "HUMAN"
+    },
+    {
+      "symbol": "o",
+      "playerType": "HUMAN"
+    },
+    {
+      "symbol": "p",
+      "playerType": "COMPUTER"
+    }
+  ]
+}
