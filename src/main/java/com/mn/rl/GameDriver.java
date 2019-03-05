@@ -13,6 +13,12 @@ public class GameDriver {
 
         private static final String ENTER_CONFIG_ERR_MSG = "Enter config file.";
         private static final String CONFIG_DNE_ERR_MSG = "Config file doesn't exist.";
+        private static final String CONFIG_FILE_READ_ERR_MSG = "Problem reading config file. Error: %s";
+        private static final String GAMEPLAY_ERR_MSG = "There was an error during game play: %s";
+
+        private static final String GAMEOVER_MSG = "The game is over.";
+        private static final String DRAW_MSG = "The game was a draw.";
+        private static final String WIN_MSG = "The game was won by %s.";
 
         public static void main(String[] args) {
                 /*
@@ -36,7 +42,7 @@ public class GameDriver {
                 try {
                         lines = Files.readAllLines(Paths.get(args[0]), StandardCharsets.UTF_8);
                 } catch (IOException e) {
-                        System.out.println(String.format("Problem reading config file. Error: %s", e.getMessage()));
+                        System.out.println(String.format(CONFIG_FILE_READ_ERR_MSG, e.getMessage()));
                 }
 
                 /*
@@ -57,18 +63,17 @@ public class GameDriver {
                 try {
                         bs = game.play();
                 } catch (Exception e) {
-                        System.out.println(String.format("There was an error during game play: %s", e.getMessage()));
+                        System.out.println(String.format(GAMEPLAY_ERR_MSG, e.getMessage()));
                 } finally {
                         /*
                          * Conclude a game.
                          */
-                        System.out.println("The game is over.");
+                        System.out.println(GAMEOVER_MSG);
                         if (bs != null) {
                                 if (bs.getBoardStateType() == BoardStateType.WINNER)
-                                        System.out.println(String.format("The game was won by %s.",
-                                                        bs.getWinner().getPlayerName()));
+                                        System.out.println(String.format(WIN_MSG, bs.getWinner().getPlayerName()));
                                 else if (bs.getBoardStateType() == BoardStateType.DRAW)
-                                        System.out.println("The game was a draw.");
+                                        System.out.println(DRAW_MSG);
                         }
                 }
         }
