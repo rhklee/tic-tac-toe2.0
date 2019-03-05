@@ -47,6 +47,12 @@ public class TicTacToeBoardStateDecider implements BoardStateDecider {
                 return true;
         }
 
+        /**
+         * Check the diagonal from the top right corner to bottom left.
+         * @param boardPositions
+         * @param boardDimension
+         * @return
+         */
         private BoardPosition[] getDiagonalRightArray(BoardPosition[][] boardPositions, int boardDimension) {
                 BoardPosition[] diagonal = new BoardPosition[boardDimension];
                 for (int i = 0; i < boardDimension; i++) {
@@ -55,6 +61,12 @@ public class TicTacToeBoardStateDecider implements BoardStateDecider {
                 return diagonal;
         }
 
+        /**
+         * Check the diagonal from the top left corner to bottom right.
+         * @param boardPositions
+         * @param boardDimension
+         * @return
+         */
         private BoardPosition[] getDiagonalLeftArray(BoardPosition[][] boardPositions, int boardDimension) {
                 BoardPosition[] diagonal = new BoardPosition[boardDimension];
                 for (int i = 0; i < boardDimension; i++) {
@@ -78,5 +90,4 @@ public class TicTacToeBoardStateDecider implements BoardStateDecider {
                         return true;
                 return false;
         }
-
 }

@@ -24,6 +24,8 @@ public class TicTacToe extends Game {
         private final String HUMAN_PLAYER_INSTRUCTIONS = "Please make your move (in the form 'row,column'): ";
         private final String USER_INPUT_REGEX = "\\d+,\\d+";
 
+        private final String UNKNOWN_PLAYER_ERR_MSG = "Current player of unknown player type: %s";
+
         public TicTacToe(Board board, PlayerTurn playerTurn) {
                 super(board, playerTurn);
         }
@@ -69,7 +71,7 @@ public class TicTacToe extends Game {
                                 } else if (currentPlayer.getPlayerType() == PlayerType.COMPUTER) {
                                         playerMove = ComputerPlayerStrategy.move(board);
                                 } else {
-                                        throw new Exception(String.format("Current player of unknown player type: %s",
+                                        throw new Exception(String.format(UNKNOWN_PLAYER_ERR_MSG,
                                                         currentPlayer.getPlayerType()));
                                 }
 
