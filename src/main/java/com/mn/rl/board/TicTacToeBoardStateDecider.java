@@ -72,6 +72,8 @@ public class TicTacToeBoardStateDecider implements BoardStateDecider {
         }
 
         private boolean arrayOccupiedByOnePlayer(BoardPosition[] boardPositions, Player player) {
+                if (player == null)
+                        return false;
                 if (Stream.of(boardPositions).map(bp -> bp.getOccupant()).allMatch(Predicate.isEqual(player)))
                         return true;
                 return false;

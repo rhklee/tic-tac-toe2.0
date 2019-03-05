@@ -9,7 +9,7 @@ public class CircularQueue<T> {
 
         public CircularQueue(List<T> list) {
                 this.list = list;
-                currentPosition = -1;
+                currentPosition = 0;
         }
 
         public T getNext() {

@@ -1,7 +1,6 @@
 package com.mn.rl;
 
 import com.mn.rl.board.Board;
-import com.mn.rl.player.Player;
 import com.mn.rl.player.PlayerTurn;
 
 public abstract class Game {

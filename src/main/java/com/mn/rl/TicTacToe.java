@@ -12,7 +12,7 @@ import com.mn.rl.player.InvalidMoveInputException;
 import com.mn.rl.player.Player;
 import com.mn.rl.player.PlayerMove;
 import com.mn.rl.player.PlayerTurn;
-import com.mn.rl.player.PlayerTurnImpl;
+import com.mn.rl.player.TicTacToePlayerTurn;
 
 public class TicTacToe extends Game {
 
@@ -25,7 +25,7 @@ public class TicTacToe extends Game {
                                 new TicTacToeBoard(boardSize,
                                                 new TicTacToeBoardFormatter(),
                                                 new TicTacToeBoardStateDecider()),
-                                new PlayerTurnImpl(players));
+                                new TicTacToePlayerTurn(players));
         }
 
         @Override

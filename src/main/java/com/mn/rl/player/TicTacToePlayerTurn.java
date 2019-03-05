@@ -4,10 +4,10 @@ import java.util.List;
 
 import com.mn.rl.CircularQueue;
 
-public class PlayerTurnImpl implements PlayerTurn {
+public class TicTacToePlayerTurn implements PlayerTurn {
         private CircularQueue<Player> playerQueue;
 
-        public PlayerTurnImpl(List<Player> players) {
+        public TicTacToePlayerTurn(List<Player> players) {
                 playerQueue = new CircularQueue<>(players);
         }
 
