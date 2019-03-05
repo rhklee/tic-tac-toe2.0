@@ -15,11 +15,11 @@ public class GameFactory {
         public static Game makeTicTacToe(List<String> configurations) throws InvalidGameSetup {
                 if (configurations == null)
                         throw new InvalidGameSetup(CONFIG_INVALID);
-                if (configurations.size() != 2)
+                if (!validNumberOfConfigInstructions(configurations.size()))
                         throw new InvalidGameSetup(CONFIG_INVALID);
-                if (!Pattern.compile("\\d+").matcher(configurations.get(0)).matches())
+                if (!isInteger(configurations.get(0)))
                         throw new InvalidGameSetup(CONFIG_INVALID);
-                if (!Pattern.compile("\\S,\\S,\\S").matcher(configurations.get(1)).matches())
+                if (!isCharSymbols(configurations.get(1)))
                         throw new InvalidGameSetup(CONFIG_INVALID);
 
                 int boardSize = Integer.valueOf(configurations.get(0));
@@ -35,4 +35,15 @@ public class GameFactory {
                 return new TicTacToe(boardSize, players);
         }
 
+        private static boolean validNumberOfConfigInstructions(int size) {
+                return size == 2;
+        }
+
+        private static boolean isInteger(String intStr) {
+                return Pattern.compile("\\d+").matcher(intStr).matches();
+        }
+        
+        private static boolean isCharSymbols(String symbols) {
+                return Pattern.compile("\\S,\\S,\\S").matcher(symbols).matches();
+        }
 }
