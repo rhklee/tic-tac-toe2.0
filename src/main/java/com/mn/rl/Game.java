@@ -1,6 +1,7 @@
 package com.mn.rl;
 
 import com.mn.rl.board.Board;
+import com.mn.rl.board.BoardState;
 import com.mn.rl.player.PlayerTurn;
 
 public abstract class Game {
@@ -40,4 +41,6 @@ public abstract class Game {
         }
 
         public abstract void playTurn();
+
+        public abstract BoardState play() throws Exception;
 }

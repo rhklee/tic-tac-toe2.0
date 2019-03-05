@@ -1,15 +1,12 @@
 package com.mn.rl.board;
 
-import com.mn.rl.player.InvalidMoveException;
 import com.mn.rl.player.Player;
 import com.mn.rl.player.PlayerMove;
 
-public class TicTacToeBoard implements Board {
-        private final BoardPosition[][] boardPositions;
-        private final int boardDimension;
+public class TicTacToeBoard extends Board {
+
         private final BoardFormatter boardFormatter;
         private final BoardStateDecider boardStateDecider;
-        private BoardState boardState;
 
         public TicTacToeBoard(int boardDimension, BoardFormatter boardFormatter, BoardStateDecider boardStateDecider) {
                 this.boardDimension = boardDimension;
@@ -24,19 +21,16 @@ public class TicTacToeBoard implements Board {
                 boardState = new BoardState();
         }
 
-        public int getBoardDimension() {
-                return boardDimension;
-        }
-
+        /**
+         * Update occupant with the player's move.
+         * It is expected the player move is valid and the board position is not occupied.
+         */
         @Override
-        public void updateWithMove(Player currentPlayer, PlayerMove pMove) throws InvalidMoveException {
-                BoardPosition boardPosition = boardPositions[pMove.getRow()][pMove.getColumn()];
-                if (!boardPosition.isEmpty()) {
-                        throw new InvalidMoveException("Position is occupied.");
-                }
+        public void updateWithMove(Player currentPlayer, PlayerMove pMove) {
+                BoardPosition boardPosition = boardPositions[pMove.getRow() - 1][pMove.getColumn() - 1];
 
                 boardPosition.setOccupant(currentPlayer);
-                boardPositions[pMove.getRow()][pMove.getColumn()] = boardPosition;
+                boardPositions[pMove.getRow() - 1][pMove.getColumn() - 1] = boardPosition;
                 boardState = boardStateDecider.evaluate(boardPositions, boardDimension);
         }
 
@@ -45,8 +39,4 @@ public class TicTacToeBoard implements Board {
                 System.out.println(boardFormatter.format(boardPositions, boardDimension));
         }
 
-        @Override
-        public BoardState getBoardState() {
-                return boardState;
-        }
 }
