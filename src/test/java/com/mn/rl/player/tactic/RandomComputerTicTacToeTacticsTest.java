@@ -1,4 +1,4 @@
-package com.mn.rl.player;
+package com.mn.rl.player.tactic;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -8,6 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import com.mn.rl.board.Board;
 import com.mn.rl.board.BoardFactory;
+import com.mn.rl.player.Player;
+import com.mn.rl.player.PlayerFactory;
+import com.mn.rl.player.PlayerMove;
+import com.mn.rl.player.TicTacToePlayerMove;
 import com.mn.rl.player.tactic.ComputerTicTacToeTactics;
 import com.mn.rl.player.tactic.RandomComputerTicTacToeTactics;
 
@@ -21,7 +25,7 @@ public class RandomComputerTicTacToeTacticsTest {
                 board.updateWithMove(players.get(1), new TicTacToePlayerMove(2, 2));
 
                 ComputerTicTacToeTactics tactics = new RandomComputerTicTacToeTactics();
-                PlayerMove pm = tactics.generateMove(board);
+                PlayerMove pm = tactics.generateMove(board, players.get(2));
 
                 assertTrue(board.getBoardPosition(pm.getRow() - 1, pm.getColumn() - 1).isEmpty());
         }

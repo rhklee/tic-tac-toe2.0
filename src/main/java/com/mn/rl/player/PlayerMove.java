@@ -19,5 +19,21 @@ public abstract class PlayerMove {
                 return colInd;
         }
 
+        @Override
+        public boolean equals(Object obj) {
+                if (this == obj)
+                        return true;
+                if (obj == null)
+                        return false;
+                if (getClass() != obj.getClass())
+                        return false;
+                PlayerMove other = (PlayerMove) obj;
+                if (colInd != other.colInd)
+                        return false;
+                if (rowInd != other.rowInd)
+                        return false;
+                return true;
+        }
+
         public abstract void validate(Board board) throws InvalidMoveException;
 }

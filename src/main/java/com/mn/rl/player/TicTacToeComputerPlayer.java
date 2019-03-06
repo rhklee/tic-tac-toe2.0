@@ -17,6 +17,6 @@ public class TicTacToeComputerPlayer extends Player {
         @Override
         public PlayerMove move(Board board, Scanner scanner) {
                 System.out.println(String.format(PLAYER_TURN_TEXT, playerName, playerSymbol));
-                return computerTicTacToeTactics.generateMove(board);
+                return computerTicTacToeTactics.generateMove(board, this);
         }
 }
