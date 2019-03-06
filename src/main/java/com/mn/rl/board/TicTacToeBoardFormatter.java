@@ -1,6 +1,6 @@
 package com.mn.rl.board;
 
-public class TicTacToeBoardFormatter implements BoardFormatter {
+class TicTacToeBoardFormatter implements BoardFormatter {
 
         private final static char EMPTY_SPOT = '_';
 

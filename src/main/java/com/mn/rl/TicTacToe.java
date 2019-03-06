@@ -5,11 +5,9 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 import com.mn.rl.board.Board;
+import com.mn.rl.board.BoardFactory;
 import com.mn.rl.board.BoardState;
 import com.mn.rl.board.BoardStateType;
-import com.mn.rl.board.TicTacToeBoard;
-import com.mn.rl.board.TicTacToeBoardFormatter;
-import com.mn.rl.board.TicTacToeBoardStateDecider;
 import com.mn.rl.player.InvalidMoveException;
 import com.mn.rl.player.Player;
 import com.mn.rl.player.PlayerMove;
@@ -31,8 +29,7 @@ public class TicTacToe extends Game {
         }
 
         public TicTacToe(int boardSize, List<Player> players) {
-                this(new TicTacToeBoard(boardSize, new TicTacToeBoardFormatter(), new TicTacToeBoardStateDecider()),
-                                new TicTacToePlayerTurn(players));
+                this(BoardFactory.makeTicTacToeBoard(boardSize), new TicTacToePlayerTurn(players));
         }
 
         @Override

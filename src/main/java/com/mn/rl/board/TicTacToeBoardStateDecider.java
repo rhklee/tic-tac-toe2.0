@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 
 import com.mn.rl.player.Player;
 
-public class TicTacToeBoardStateDecider implements BoardStateDecider {
+class TicTacToeBoardStateDecider implements BoardStateDecider {
 
         @Override
         public BoardState evaluate(BoardPosition[][] boardPositions, int boardDimension) {

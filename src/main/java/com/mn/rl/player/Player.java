@@ -1,8 +1,6 @@
 package com.mn.rl.player;
 
-import com.mn.rl.board.Board;
-
-public abstract class Player {
+public class Player {
 
         protected String playerName;
         protected char playerSymbol;
@@ -41,5 +39,4 @@ public abstract class Player {
                 return true;
         }
 
-        public abstract PlayerMove move(Board board) throws InvalidMoveInputException;
 }
