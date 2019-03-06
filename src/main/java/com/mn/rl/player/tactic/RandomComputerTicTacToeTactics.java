@@ -1,12 +1,15 @@
-package com.mn.rl.player;
+package com.mn.rl.player.tactic;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.mn.rl.board.Board;
+import com.mn.rl.player.PlayerMove;
+import com.mn.rl.player.TicTacToePlayerMove;
 
-public class ComputerPlayerStrategy {
+public class RandomComputerTicTacToeTactics implements ComputerTicTacToeTactics {
 
-        public static PlayerMove move(Board board) {
+        @Override
+        public PlayerMove generateMove(Board board) {
                 final int boardDim = board.getBoardDimension();
                 int randRow;
                 int randCol;
@@ -18,5 +21,4 @@ public class ComputerPlayerStrategy {
 
                 return new TicTacToePlayerMove(randRow + 1, randCol + 1);
         }
-
 }

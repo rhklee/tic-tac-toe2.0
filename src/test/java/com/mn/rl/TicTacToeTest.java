@@ -13,6 +13,7 @@ import com.mn.rl.board.BoardStateType;
 import com.mn.rl.player.Player;
 import com.mn.rl.player.TicTacToeComputerPlayer;
 import com.mn.rl.player.TicTacToeHumanPlayer;
+import com.mn.rl.player.tactic.RandomComputerTicTacToeTactics;
 
 public class TicTacToeTest {
 
@@ -22,7 +23,7 @@ public class TicTacToeTest {
                 List<Player> players = new ArrayList<>();
                 players.add(new TicTacToeHumanPlayer("Player 1", 'x'));
                 players.add(new TicTacToeHumanPlayer("Player 2", 'o'));
-                players.add(new TicTacToeComputerPlayer("Player 3", 'a'));
+                players.add(new TicTacToeComputerPlayer("Player 3", 'a', new RandomComputerTicTacToeTactics()));
 
                 Game game = new TicTacToe(dimension, players);
 
