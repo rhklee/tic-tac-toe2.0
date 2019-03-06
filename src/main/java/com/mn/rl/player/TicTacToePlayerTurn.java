@@ -2,8 +2,6 @@ package com.mn.rl.player;
 
 import java.util.List;
 
-import com.mn.rl.CircularQueue;
-
 public class TicTacToePlayerTurn implements PlayerTurn {
         private CircularQueue<Player> playerQueue;
 
@@ -14,7 +12,7 @@ public class TicTacToePlayerTurn implements PlayerTurn {
         public Player currentPlayer() {
                 return playerQueue.peekCurrent();
         }
-        
+
         public void nextPlayer() {
                 playerQueue.next();
         }

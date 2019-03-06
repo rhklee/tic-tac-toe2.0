@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import com.mn.rl.player.Player;
 import com.mn.rl.player.PlayerFactory;
 
-public class GameFactory {
+class GameFactory {
 
         private static final String CONFIG_INVALID = "Invalid configuration file.";
 

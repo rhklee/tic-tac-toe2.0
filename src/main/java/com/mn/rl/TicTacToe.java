@@ -8,6 +8,7 @@ import com.mn.rl.board.Board;
 import com.mn.rl.board.BoardFactory;
 import com.mn.rl.board.BoardState;
 import com.mn.rl.board.BoardStateType;
+import com.mn.rl.player.ComputerPlayerStrategy;
 import com.mn.rl.player.InvalidMoveException;
 import com.mn.rl.player.Player;
 import com.mn.rl.player.PlayerMove;

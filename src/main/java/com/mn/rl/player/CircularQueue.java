@@ -1,8 +1,8 @@
-package com.mn.rl;
+package com.mn.rl.player;
 
 import java.util.List;
 
-public class CircularQueue<T> {
+class CircularQueue<T> {
 
         private List<T> list;
         private int currentPosition;

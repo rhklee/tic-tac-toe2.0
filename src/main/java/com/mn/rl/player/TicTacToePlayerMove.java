@@ -9,7 +9,6 @@ public class TicTacToePlayerMove implements PlayerMove {
 
         public TicTacToePlayerMove(int rowInd, int colInd) {
                 super();
-//                System.out.println(String.format("Initializing TicTacToePlayerMove: (%s,%s)", rowInd, colInd));
                 this.rowInd = rowInd;
                 this.colInd = colInd;
         }

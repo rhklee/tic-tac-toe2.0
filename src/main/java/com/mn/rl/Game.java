@@ -4,7 +4,7 @@ import com.mn.rl.board.Board;
 import com.mn.rl.board.BoardState;
 import com.mn.rl.player.PlayerTurn;
 
-public abstract class Game {
+abstract class Game {
         protected Board board;
         protected PlayerTurn playerTurn;
 

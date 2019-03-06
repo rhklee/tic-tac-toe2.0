@@ -1,10 +1,8 @@
-package com.mn.rl;
+package com.mn.rl.player;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 import com.mn.rl.board.Board;
-import com.mn.rl.player.PlayerMove;
-import com.mn.rl.player.TicTacToePlayerMove;
 
 public class ComputerPlayerStrategy {
 
