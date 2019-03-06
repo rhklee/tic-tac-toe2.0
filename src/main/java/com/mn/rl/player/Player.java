@@ -7,9 +7,9 @@ import com.mn.rl.board.Board;
 
 public class Player {
 
-        protected String playerName;
-        protected char playerSymbol;
-        protected PlayerType playerType;
+        private final String playerName;
+        private final char playerSymbol;
+        private final PlayerType playerType;
 
         private final String PLAYER_TURN_TEXT = "It is %s turn. [symbol = %s]";
         private final String HUMAN_PLAYER_INSTRUCTIONS = "Please make your move (in the form 'row,column'): ";
@@ -17,6 +17,12 @@ public class Player {
 
         private final String UNKNOWN_PLAYER_ERR_MSG = "Current player of unknown player type: %s";
 
+        public Player(String playerName, char playerSymbol, PlayerType playerType) {
+                this.playerName = playerName;
+                this.playerSymbol = playerSymbol;
+                this.playerType = playerType;
+        }
+        
         public String getPlayerName() {
                 return playerName;
         }
@@ -50,6 +56,7 @@ public class Player {
                 return true;
         }
 
+        
         public PlayerMove move(Board board, Scanner scanner) throws Exception {
                 PlayerMove playerMove;
 
