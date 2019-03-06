@@ -16,14 +16,14 @@ public class TicTacToeLineTest {
 
         private static Player p1;
         private static Player p2;
-        private static Player p3;
+//        private static Player p3;
 
         @BeforeAll
         public static void setup() {
                 List<Player> players = PlayerFactory.generatePlayers(new Character[] { 'x', 'y', 'z' });
                 p1 = players.get(0);
                 p2 = players.get(1);
-                p3 = players.get(2);
+//                p3 = players.get(2);
         }
 
         @Test
@@ -36,6 +36,7 @@ public class TicTacToeLineTest {
                 entries.add(new TicTacToeEntry(1, 5, new BoardPosition()));
                 TicTacToeLine line = new TicTacToeLine(entries, 5);
                 assertEquals(0, line.score(p1));
+
         }
 
         @Test
@@ -61,7 +62,7 @@ public class TicTacToeLineTest {
                 TicTacToeLine line = new TicTacToeLine(entries, 5);
                 assertEquals(-1, line.score(p1));
         }
-        
+
         @Test
         public void score_line_one_almost_full_line() {
                 List<TicTacToeEntry> entries = new ArrayList<>();

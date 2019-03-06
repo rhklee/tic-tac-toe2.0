@@ -21,11 +21,11 @@ public class GameDriver {
 
         public static void main(String[] args) {
                 /*
-                 * Read in configurations. 1. Board dimensions: 3 - 10 2. Players a. human / ai
+                 * Read in configurations. 1. Board dimensions: 3 - 10 2. Players a. human / computer
                  * b. symbol
                  * 
                  * Check: 1. Valid dimensions 2. Player symbols are unique 3. Must be 3 players
-                 * 4. Only one of the players must be ai
+                 * 4. Only one of the players must be computer
                  */
                 if (args.length != 1) {
                         System.out.println(ENTER_CONFIG_ERR_MSG);
@@ -44,9 +44,7 @@ public class GameDriver {
                         System.out.println(String.format(CONFIG_FILE_READ_ERR_MSG, e.getMessage()));
                 }
 
-                /*
-                 * Initialize game.
-                 */
+                // Initialize game.
                 Game game = null;
                 try {
                         game = GameFactory.makeTicTacToe(lines);
@@ -55,18 +53,14 @@ public class GameDriver {
                         return;
                 }
 
-                /*
-                 * Play the game.
-                 */
+                // Play the game.
                 BoardState bs = null;
                 try {
                         bs = game.play();
                 } catch (Exception e) {
                         System.out.println(String.format(GAMEPLAY_ERR_MSG, e.getMessage()));
                 } finally {
-                        /*
-                         * Conclude a game.
-                         */
+                        // Conclude a game.
                         System.out.println(GAMEOVER_MSG);
                         if (bs != null) {
                                 if (bs.getBoardStateType() == BoardStateType.WINNER)
