@@ -13,7 +13,7 @@ public class TicTacToePlayerMove extends PlayerMove {
         }
 
         /**
-         * Row and column indices inputted by the user are not zero indexed.
+         * Row and column indices inputed by the user are not zero indexed.
          */
         @Override
         public void validate(Board board) throws InvalidMoveException {
