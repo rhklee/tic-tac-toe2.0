@@ -2,15 +2,10 @@ package com.mn.rl.player;
 
 import com.mn.rl.board.Board;
 
-public class TicTacToePlayerMove implements PlayerMove {
-
-        private int rowInd;
-        private int colInd;
+public class TicTacToePlayerMove extends PlayerMove {
 
         public TicTacToePlayerMove(int rowInd, int colInd) {
-                super();
-                this.rowInd = rowInd;
-                this.colInd = colInd;
+                super(rowInd, colInd);
         }
 
         /**
@@ -29,15 +24,5 @@ public class TicTacToePlayerMove implements PlayerMove {
 
                 if (!board.getBoardPosition(rowInd - 1, colInd - 1).isEmpty())
                         throw new InvalidMoveException("Position is occupied.");
-        }
-
-        @Override
-        public int getRow() {
-                return rowInd;
-        }
-
-        @Override
-        public int getColumn() {
-                return colInd;
         }
 }
