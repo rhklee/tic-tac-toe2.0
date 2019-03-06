@@ -3,8 +3,8 @@ package com.mn.rl.player;
 import com.mn.rl.board.Board;
 
 public abstract class PlayerMove {
-        protected int rowInd;
-        protected int colInd;
+        protected final int rowInd;
+        protected final int colInd;
 
         public PlayerMove(int rowInd, int colInd) {
                 this.rowInd = rowInd;
