@@ -22,7 +22,7 @@ public class Player {
                 this.playerSymbol = playerSymbol;
                 this.playerType = playerType;
         }
-        
+
         public String getPlayerName() {
                 return playerName;
         }
@@ -56,8 +56,7 @@ public class Player {
                 return true;
         }
 
-        
-        public PlayerMove move(Board board, Scanner scanner) throws Exception {
+        public PlayerMove move(Board board, Scanner scanner) throws InvalidPlayerException {
                 PlayerMove playerMove;
 
                 System.out.println(String.format(PLAYER_TURN_TEXT, playerName, playerSymbol));
@@ -87,7 +86,7 @@ public class Player {
                 } else if (playerType == PlayerType.COMPUTER) {
                         playerMove = ComputerPlayerStrategy.move(board);
                 } else {
-                        throw new Exception(String.format(UNKNOWN_PLAYER_ERR_MSG, playerType));
+                        throw new InvalidPlayerException(String.format(UNKNOWN_PLAYER_ERR_MSG, playerType));
                 }
                 return playerMove;
         }
