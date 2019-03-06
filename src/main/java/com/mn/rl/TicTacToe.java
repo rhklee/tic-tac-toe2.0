@@ -17,7 +17,7 @@ import com.mn.rl.player.PlayerType;
 import com.mn.rl.player.TicTacToePlayerMove;
 import com.mn.rl.player.TicTacToePlayerTurn;
 
-public class TicTacToe extends Game {
+class TicTacToe extends Game {
 
         private final String PLAYER_TURN_TEXT = "It is %s turn. [symbol = %s]";
         private final String HUMAN_PLAYER_INSTRUCTIONS = "Please make your move (in the form 'row,column'): ";

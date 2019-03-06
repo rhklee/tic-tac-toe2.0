@@ -10,7 +10,6 @@ import com.mn.rl.board.BoardState;
 import com.mn.rl.board.BoardStateType;
 
 public class GameDriver {
-
         private static final String ENTER_CONFIG_ERR_MSG = "Enter config file.";
         private static final String CONFIG_DNE_ERR_MSG = "Config file doesn't exist.";
         private static final String CONFIG_FILE_READ_ERR_MSG = "Problem reading config file. Error: %s";
